@@ -18,3 +18,6 @@ But it allows for more:
 
 ## Format
 See `server-setup-config.yaml` for a example file how this file should be layouted.
+
+## Modified
+* Removed internet test part.
