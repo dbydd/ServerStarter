@@ -20,39 +20,39 @@ class InternetManager(private val configFile: ConfigFile) {
     // Checking for connections seems to be broken on linux without root priviliges
     // Therefore we use HTTP get requests on linux to check for a valid connection
     fun checkConnection(): Boolean {
-        var reached = 0
+//         var reached = 0
 
-        val urls = listOf("http://example.com", "http://google.com")
-        for (url in urls) {
-            try {
-                LOGGER.info("Testing $url.")
+//         val urls = listOf("http://example.com", "http://google.com")
+//         for (url in urls) {
+//             try {
+//                 LOGGER.info("Testing $url.")
 
-                val req = Request.Builder()
-                    .url(url)
-                    .get()
-                    .build()
+//                 val req = Request.Builder()
+//                     .url(url)
+//                     .get()
+//                     .build()
 
-                val r = try {
-                    httpClient.newCall(req).execute().use {
-                        it.isSuccessful
-                        true
-                    }
-                } catch (ex: IOException) {
-                    false
-                }
+//                 val r = try {
+//                     httpClient.newCall(req).execute().use {
+//                         it.isSuccessful
+//                         true
+//                     }
+//                 } catch (ex: IOException) {
+//                     false
+//                 }
 
-                LOGGER.info("Reached $url: $r")
-                if (r) reached++
-            } catch (e: IOException) {
-                LOGGER.error("Error while attempting to reach a remote server", e)
-            }
-        }
+//                 LOGGER.info("Reached $url: $r")
+//                 if (r) reached++
+//             } catch (e: IOException) {
+//                 LOGGER.error("Error while attempting to reach a remote server", e)
+//             }
+//         }
 
-        LOGGER.info("Reached $reached out of ${urls.size} IPs.")
-        if (reached != urls.size) {
-            LOGGER.error("Not every host could be reached. There could be a problem with your internet connection!!!!")
-            return false
-        }
+//         LOGGER.info("Reached $reached out of ${urls.size} IPs.")
+//         if (reached != urls.size) {
+//             LOGGER.error("Not every host could be reached. There could be a problem with your internet connection!!!!")
+//             return false
+//         }
 
         return true
     }
